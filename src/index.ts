@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import express from 'express';
-import createPlayerSocket from './socket';
+import createPlayerSocket from './connection';
 dotenv.config();
 
 const app = express();

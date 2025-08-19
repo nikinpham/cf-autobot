@@ -1,6 +1,7 @@
 export type TickUpdate = {
     id: number;
     timestamp: number;
+    player_id: string;
     map_info: {
         size: {
             cols: number;

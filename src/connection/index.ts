@@ -1,5 +1,7 @@
 import { io as ClientIO, Socket } from 'socket.io-client';
 import { TRANSFORMED_TYPES } from '../constants';
+import parseTickToState from '../adapter/ server-to-state';
+import { TickUpdate } from '../types/game-info';
 
 function createPlayerSocket(host: string, player_id: string): Socket {
     const socket: Socket = ClientIO(host, {
@@ -21,11 +23,22 @@ function createPlayerSocket(host: string, player_id: string): Socket {
         });
     });
 
-    socket.on("ticktack player", res => {
+    const outBuf = new Uint8Array(256);
+    socket.on("ticktack player", (res: TickUpdate) => {
         // socket.emit('player speak', { command: 't4' });
-        socket.emit('drive player', {
-            direction: '1'
-        });
+        if (res.player_id === "player1-xxx") {
+            // console.log(res)
+            const s = parseTickToState(res);
+            // socket.emit('drive player', {
+            //     direction: '2b11'
+            // });
+        }
+    });
+
+    socket.on('drive player', res => {
+        if (res.player_id === "player1-xxx") {
+            // console.log(res.direction);
+        }
     });
 
     return socket;

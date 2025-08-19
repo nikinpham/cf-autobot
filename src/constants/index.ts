@@ -13,7 +13,8 @@ export enum SPOIL_TYPES {
     CHUNG_CAKE = 33,
     NINE_TUSK_ELEPHANT = 34,
     NINE_SPUR_ROOSTER = 35,
-    NINE_MANE_HAIR_HORSE = 36
+    NINE_MANE_HAIR_HORSE = 36,
+    BOMB = 99
 }
 
 export enum GAME_STATUS {
