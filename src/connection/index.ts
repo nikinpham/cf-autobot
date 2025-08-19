@@ -1,6 +1,6 @@
 import { io as ClientIO, Socket } from 'socket.io-client';
+import parseTickToState from '../adapter/server-to-state';
 import { TRANSFORMED_TYPES } from '../constants';
-import parseTickToState from '../adapter/ server-to-state';
 import { TickUpdate } from '../types/game-info';
 
 function createPlayerSocket(host: string, player_id: string): Socket {
@@ -24,6 +24,7 @@ function createPlayerSocket(host: string, player_id: string): Socket {
     });
 
     const outBuf = new Uint8Array(256);
+
     socket.on("ticktack player", (res: TickUpdate) => {
         // socket.emit('player speak', { command: 't4' });
         if (res.player_id === "player1-xxx") {

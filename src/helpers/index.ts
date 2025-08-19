@@ -1,5 +1,5 @@
 import { MAP_VALUES, SPOIL_TYPES } from "../constants";
-import { Bomb, Player, Spoil } from "../types/player";
+import { Spoil } from "../types/player";
 
 function mapCellToEnum(v: number): number {
     switch (v) {
@@ -23,16 +23,31 @@ function mapSpoilToEnum(s: Spoil): number {
     }
 }
 
+/**
+ * djb2Hash - A simple and fast non-cryptographic hash function
+ * Commonly used for quick change detection on arrays/buffers.
+ *
+ * @param buf - Input data (Uint8Array or number array)
+ * @returns A 32-bit unsigned integer hash
+ */
 function djb2Hash(buf: Uint8Array | number[]): number {
+    // Initialize hash with a "magic" constant seed (5381)
     let h = 5381 >>> 0;
+
     const n = buf.length;
-    for (let i = 0; i < n; i++) h = (((h << 5) + h) + (buf[i]!)) >>> 0;
+    for (let i = 0; i < n; i++) {
+        // Hash = hash * 33 + current_value
+        // (h << 5) is h * 32, so (h << 5) + h = h * 33
+        // >>> 0 ensures the result stays as an unsigned 32-bit integer
+        h = (((h << 5) + h) + (buf[i]!)) >>> 0;
+    }
+
+    // Return the final hash value as a 32-bit unsigned integer
     return h >>> 0;
 }
 
 
 export {
-    mapCellToEnum,
-    mapSpoilToEnum,
-    djb2Hash
-}
+    djb2Hash, mapCellToEnum,
+    mapSpoilToEnum
+};
