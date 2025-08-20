@@ -37,7 +37,7 @@ export type WeaponPlace = {
 }
 
 export type Player = {
-    id: number;
+    id: string;
     currentPosition: {
         col: number;
         row: number;

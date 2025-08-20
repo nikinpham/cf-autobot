@@ -20,8 +20,8 @@ function parseTickToState(tick: TickUpdate) {
     // Identify "me" and "opponent" based on player_id
     const p1 = map_info.players[0];
     const p2 = map_info.players[1];
-    const meRaw = p1?.player_id === player_id ? p1 : p2;
-    const oppRaw = p1?.player_id === player_id ? p2 : p1;
+    const meRaw = p1?.id === player_id ? p1 : p2;
+    const oppRaw = p1?.id === player_id ? p2 : p1;
 
     // Convert the raw map into a grid of enums
     const grid = new Uint8Array(W * H);
