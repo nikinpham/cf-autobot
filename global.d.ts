@@ -32,8 +32,8 @@ declare global {
     type DirectionValue = "1" | "2" | "3" | "4" | "b" | "x";
 
     const enum TransformType {
-        MOUNTAIN_GOD = 1,
-        SEA_GOD = 2
+        MOUNTAIN_GOD = "1",
+        SEA_GOD = "2"
     }
 
     const enum ActionType {
@@ -47,7 +47,8 @@ declare global {
         CHUNG_CAKE = 33,        // +2 Points
         NINE_TUSK_ELEPHANT = 34,// +5 Points and +1 Bomb power
         NINE_SPUR_ROOSTER = 35, // +3 Points
-        NINE_MANE_HAIR_HORSE = 36 // +4 Points
+        NINE_MANE_HAIR_HORSE = 36, // +4 Points
+        BOMB = 99 //
     }
 
     interface Position {

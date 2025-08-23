@@ -1,10 +1,10 @@
 function mapCellToEnum(v: number): number {
     switch (v) {
-        case 1: return MapValues.WALL;
-        case 2: return MapValues.BOX;
-        case 3: return MapValues.BRICK_WALL;
-        case 5: return MapValues.PRISON;
-        case 6: return MapValues.GOD_BADGE;
+        case MapValues.WALL: return MapValues.WALL;
+        case MapValues.BOX: return MapValues.BOX;
+        case MapValues.BRICK_WALL: return MapValues.BRICK_WALL;
+        case MapValues.PRISON: return MapValues.PRISON;
+        case MapValues.GOD_BADGE: return MapValues.GOD_BADGE;
         default: return MapValues.ROAD;
     }
 }
@@ -12,10 +12,10 @@ function mapCellToEnum(v: number): number {
 
 function mapSpoilToEnum(s: Spoil): number {
     switch ((s.spoil_type)) {
-        case 33: return SpoilType.CHUNG_CAKE;
-        case 34: return SpoilType.NINE_TUSK_ELEPHANT;
-        case 35: return SpoilType.NINE_SPUR_ROOSTER;
-        case 36: return SpoilType.NINE_MANE_HAIR_HORSE;
+        case SpoilType.CHUNG_CAKE: return SpoilType.CHUNG_CAKE;
+        case SpoilType.NINE_TUSK_ELEPHANT: return SpoilType.NINE_TUSK_ELEPHANT;
+        case SpoilType.NINE_SPUR_ROOSTER: return SpoilType.NINE_SPUR_ROOSTER;
+        case SpoilType.NINE_MANE_HAIR_HORSE: return SpoilType.NINE_MANE_HAIR_HORSE;
         default: return SpoilType.STICKY_RICE;
     }
 }

@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import { GameSocket } from './connection';
+import { SeaGodStrategy } from './planner';
 dotenv.config();
 
 const app = express();
@@ -11,22 +12,18 @@ const PLAYER_ID = process.env.PLAYER_ID_JOIN_GAME ?? "player1-xxx";
 
 async function main() {
     const socketClient = GameSocket.connect(SERVER_URL);
-    // const strat = new SeaGodStrategy(sock, PLAYER_ID, GAME_ID);
+    const bot = new SeaGodStrategy(socketClient, PLAYER_ID, GAME_ID);
 
     socketClient.on(EventSocketType.CONNECT, () => {
         socketClient.joinGame({ game_id: GAME_ID, player_id: PLAYER_ID });
     });
 
     socketClient.on(EventSocketType.JOIN_GAME, (_resp: any) => {
-        // Ngay sau khi lắng nghe join game -> đăng ký SEA_GOD
-        // strat.onJoinGame();
+        bot.onJoinGame();
     });
 
     socketClient.on(EventSocketType.TICK, (t: Ticktack) => {
-        try {
-            // strat.onTick(t);
-            // console.log(t)
-        } catch (e) { console.error(e); }
+        try { bot.onTick(t); } catch (e) { console.error(e); }
     });
 }
 

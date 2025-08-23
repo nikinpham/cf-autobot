@@ -1,13 +1,11 @@
-import { SPOIL_TYPES } from "../constants";
 import { djb2Hash, mapCellToEnum, mapSpoilToEnum } from "../helpers";
-import { TickUpdate } from "../types/game-info";
-import { Bomb } from "../types/player";
 
+export type BotState = {};
 /**
  * Convert a raw game tick update (from server) into a processed state
  * that can be easily consumed by the client for rendering or decision making.
  */
-function parseTickToState(tick: TickUpdate) {
+function botState(tick: Ticktack): BotState {
     const { timestamp, map_info, player_id } = tick;
 
     // Map dimensions
@@ -45,7 +43,7 @@ function parseTickToState(tick: TickUpdate) {
     for (const b of map_info.bombs ?? []) {
         bombs.push(b);
         const bi = (b.row | 0) * W + (b.col | 0); // index of bomb
-        grid[bi] = SPOIL_TYPES.BOMB; // Mark grid cell as bomb
+        grid[bi] = SpoilType.BOMB; // Mark grid cell as bomb
     }
 
     // Hash of the grid for change detection (fast comparison)
@@ -60,4 +58,4 @@ function parseTickToState(tick: TickUpdate) {
     return { now, W, H, grid, bombs, gridVersion, bombsHash };
 }
 
-export default parseTickToState;
+export default botState;
