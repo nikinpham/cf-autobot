@@ -1,18 +1,45 @@
 import dotenv from 'dotenv';
 import express from 'express';
-import createPlayerSocket from './connection';
+import { GameSocket } from './connection';
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const HOST = process.env.SOCKET_URL || 'http://localhost';
+const SERVER_URL = process.env.SOCKET_URL || 'http://localhost';
+const GAME_ID = process.env.GAME_ID ?? "91234a86-5234-4eac-b5e4-dcff08d4e8b7";
+const PLAYER_ID = process.env.PLAYER_ID_JOIN_GAME ?? "player1-xxx";
 
-// PLAYER
-createPlayerSocket(HOST, process.env.PLAYER_ID_JOIN_GAME || 'player1-xxx');
+async function main() {
+    const socketClient = GameSocket.connect(SERVER_URL);
+    // const strat = new SeaGodStrategy(sock, PLAYER_ID, GAME_ID);
 
-// DUMP BOT
-createPlayerSocket(HOST, "player2-xxx");
+    socketClient.on(EventSocketType.CONNECT, () => {
+        socketClient.joinGame({ game_id: GAME_ID, player_id: PLAYER_ID });
+    });
+
+    socketClient.on(EventSocketType.JOIN_GAME, (_resp: any) => {
+        // Ngay sau khi lắng nghe join game -> đăng ký SEA_GOD
+        // strat.onJoinGame();
+    });
+
+    socketClient.on(EventSocketType.TICK, (t: Ticktack) => {
+        try {
+            // strat.onTick(t);
+            // console.log(t)
+        } catch (e) { console.error(e); }
+    });
+}
+
+async function dump() {
+    const socketClient = GameSocket.connect(SERVER_URL);
+    socketClient.on(EventSocketType.CONNECT, () => {
+        socketClient.joinGame({ game_id: GAME_ID, player_id: "player2-xxx" });
+    });
+}
+
+main().catch(console.error);
+dump();
 
 app.listen(PORT, () => {
-    console.log(`Express server running on ${HOST}:${PORT}`);
+    console.log(`Express server running on ${SERVER_URL}:${PORT}`);
 });

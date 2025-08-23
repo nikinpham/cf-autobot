@@ -1,25 +1,22 @@
-import { MAP_VALUES, SPOIL_TYPES } from "../constants";
-import { Spoil } from "../types/player";
-
 function mapCellToEnum(v: number): number {
     switch (v) {
-        case 1: return MAP_VALUES.OUTLINE;
-        case 2: return MAP_VALUES.BOX;
-        case 3: return MAP_VALUES.BRICK_WALL;
-        case 5: return MAP_VALUES.PRISON;
-        case 6: return MAP_VALUES.GOD_BADGE;
-        default: return MAP_VALUES.ROAD;
+        case 1: return MapValues.WALL;
+        case 2: return MapValues.BOX;
+        case 3: return MapValues.BRICK_WALL;
+        case 5: return MapValues.PRISON;
+        case 6: return MapValues.GOD_BADGE;
+        default: return MapValues.ROAD;
     }
 }
 
 
 function mapSpoilToEnum(s: Spoil): number {
-    switch ((s.spoilType)) {
-        case 33: return SPOIL_TYPES.CHUNG_CAKE;
-        case 34: return SPOIL_TYPES.NINE_TUSK_ELEPHANT;
-        case 35: return SPOIL_TYPES.NINE_SPUR_ROOSTER;
-        case 36: return SPOIL_TYPES.NINE_MANE_HAIR_HORSE;
-        default: return SPOIL_TYPES.STICKY_RICE;
+    switch ((s.spoil_type)) {
+        case 33: return SpoilType.CHUNG_CAKE;
+        case 34: return SpoilType.NINE_TUSK_ELEPHANT;
+        case 35: return SpoilType.NINE_SPUR_ROOSTER;
+        case 36: return SpoilType.NINE_MANE_HAIR_HORSE;
+        default: return SpoilType.STICKY_RICE;
     }
 }
 
@@ -48,6 +45,7 @@ function djb2Hash(buf: Uint8Array | number[]): number {
 
 
 export {
-    djb2Hash, mapCellToEnum,
+    djb2Hash,
+    mapCellToEnum,
     mapSpoilToEnum
 };
