@@ -58,12 +58,12 @@ export enum HAMMER_TAGS {
 }
 
 export enum WOODEN_TAGS {
-    SETUP = "wooden-pestle:setup"
+    WOODEN_SETUP = "wooden-pestle:setup"
 }
 
 export enum WEAPON_WIND_TAGS {
-    SETUP = "wind:setup",
-    EXPLODED = "wind:exploded"
+    WIND_SETUP = "wind:setup",
+    WIND_EXPLODED = "wind:exploded"
 }
 
 export enum DIRECTIONS {

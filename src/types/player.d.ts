@@ -1,51 +1,38 @@
-export type Bomb = {
+export type Position = {
     row: number;
     col: number;
+}
+
+export type Bomb = Position & {
     remainTime: number;
     playerId: number;
     power: number;
     createAt: number;
 }
 
-export type Spoil = {
-    row: number;
-    col: number;
+export type Spoil = Position & {
     spoilType: number;
 }
 
 export type WeaponHammer = {
     playerId: number;
     power: number;
-    destination: {
-        row: number;
-        col: number;
-    };
+    destination: Position;
     createAt: number;
 }
 
-export type WeaponWind = {
+export type WeaponWind = Position & {
     playerId: number;
-    row: number;
-    col: number;
-    destination: number
 }
 
-export type WeaponPlace = {
+export type WeaponPlace = Position & {
     playerId: number;
-    row: number;
-    col: number;
 }
 
 export type Player = {
     id: string;
-    currentPosition: {
-        col: number;
-        row: number;
-    };
-    spawnBegin: {
-        col: number;
-        row: number;
-    };
+    currentPosition: Position;
+    spawnBegin: Position;
     score: number;
     lives: number;
     transformType: number;
@@ -53,7 +40,7 @@ export type Player = {
     currentWeapon: number;
     hasTransform: boolean;
     timeToUseSpecialWeapons: number;
-    haveSpecialWeapon: true;
+    haveSpecialWeapon: boolean;
     isStun: boolean;
     speed: number;
     power: number;
