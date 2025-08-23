@@ -28,7 +28,7 @@ function createPlayerSocket(host: string, player_id: string): Socket {
     socket.on("ticktack player", (res: TickUpdate) => {
         // socket.emit('player speak', { command: 't4' });
         if (res.player_id === "player1-xxx") {
-            // console.log(res)
+            // console.log(JSON.stringify(res))
             const s = parseTickToState(res);
             // socket.emit('drive player', {
             //     direction: '2b11'
