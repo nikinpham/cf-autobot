@@ -1,12 +1,21 @@
 import { djb2Hash, mapCellToEnum, mapSpoilToEnum } from "../helpers";
 
-export type BotState = {};
+export type BotState = {
+    id: string | number;
+    now: number;
+    W: number;
+    H: number;
+    grid: Uint8Array;
+    bombs: Bomb[];
+    gridVersion: number;
+    bombsHash: number;
+};
 /**
  * Convert a raw game tick update (from server) into a processed state
  * that can be easily consumed by the client for rendering or decision making.
  */
 function botState(tick: Ticktack): BotState {
-    const { timestamp, map_info, player_id } = tick;
+    const { timestamp, map_info, player_id, id } = tick;
 
     // Map dimensions
     const W = map_info.size.cols | 0;
@@ -55,7 +64,7 @@ function botState(tick: Ticktack): BotState {
     );
 
     // Return structured state
-    return { now, W, H, grid, bombs, gridVersion, bombsHash };
+    return { id, now, W, H, grid, bombs, gridVersion, bombsHash };
 }
 
 export default botState;

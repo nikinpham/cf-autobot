@@ -1,3 +1,4 @@
+import botState from "../adapter/server-to-state";
 import { GameSocket } from "../connection";
 
 export class SeaGodStrategy {
@@ -9,6 +10,6 @@ export class SeaGodStrategy {
     }
 
     onTick(t: Ticktack) {
-        // console.log(t)
+        const s = botState(t);
     }
 }

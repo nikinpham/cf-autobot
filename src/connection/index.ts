@@ -33,12 +33,15 @@ export class GameSocket {
     joinGame(p: EmitJoin) {
         this.socket.emit(EmitType.JOIN_GAME, p);
     }
+
     drive(p: EmitDrive) {
         this.socket.emit(EmitType.DRIVE_PLAYER, p);
     }
+
     register(p: EmitRegister) {
         this.socket.emit(EmitType.REGISTER_CHARACTER_POWER, p);
     }
+
     action(p: EmitAction) {
         this.socket.emit(EmitType.ACTION, p);
     }
