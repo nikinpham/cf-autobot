@@ -1,0 +1,11 @@
+node_modules
+dist
+build
+coverage
+tmp
+.out
+*.log
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+.husky/**

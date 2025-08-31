@@ -1,0 +1,18 @@
+{
+  "files.eol": "\n",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "explorer.confirmDragAndDrop": false,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "prettier.prettierPath": "./node_modules/prettier",
+  "editor.formatOnSaveMode": "file",
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "prettier.requireConfig": true,
+  "eslint.validate": ["javascript", "typescript"],
+  "editor.codeActionsOnSave": { "source.fixAll.eslint": "always" }
+}

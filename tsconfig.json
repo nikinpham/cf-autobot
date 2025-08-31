@@ -1,20 +1,41 @@
+// {
+//   "compilerOptions": {
+//     "lib": ["esnext", "dom", "webworker"],
+//     "target": "es6",
+//     "module": "commonjs",
+//     "moduleResolution": "node",
+//     "outDir": "./dist",
+//     "rootDir": "./src",
+//     "strict": true,
+//     "esModuleInterop": true,
+//     "skipLibCheck": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "types": ["node"]
+//   },
+//   "include": ["src", "**/*.d.ts"],
+//   "exclude": ["node_modules"],
+//   "ts-node": {
+//     "files": true
+//   }
+// }
 {
   "compilerOptions": {
-    "lib": ["esnext", "dom", "webworker"],
-    "target": "es6",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "outDir": "./dist",
-    "rootDir": "./src",
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "lib": ["ES2022"],
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "outDir": "dist",
+    "rootDir": "src",
     "types": ["node"]
+    // Nếu bạn dùng alias:
+    // "baseUrl": ".",
+    // "paths": { "@/*": ["src/*"] }
   },
-  "include": ["src", "**/*.d.ts"],
-  "exclude": ["node_modules"],
-  "ts-node": {
-    "files": true
-  }
+  "include": ["src", "global.d.ts"],
+  "exclude": ["node_modules", "dist", "build", "coverage", "tmp", ".out"]
 }

@@ -1,0 +1,9 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "type": "npm", "script": "lint", "group": "build", "problemMatcher": ["$eslint-stylish"] },
+    { "type": "npm", "script": "lint:fix" },
+    { "type": "npm", "script": "format" },
+    { "type": "npm", "script": "format:check" }
+  ]
+}

@@ -1,1 +1,1 @@
-export * from './sea-god'
+export * from './sea-god';
